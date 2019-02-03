@@ -34,6 +34,24 @@ class App extends Component {
     })
   };
 
+  deletePost = id => {
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(res => console.log(`delete data success : ${res.status}`))
+      .catch(err => console.log(err))
+
+    // actually, after delete data must be return the result
+    // the new resutl will be set to state
+
+    let posts = this.state.posts.filter(post => {
+      return post.id !== id
+    })
+
+    this.setState({
+      posts: posts
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,7 +62,7 @@ class App extends Component {
           </p>
         </header>
         <PostForm inputPost={this.inputPost} /> <hr />
-        <PostList postList={this.state.posts} />
+        <PostList deletePost={this.deletePost} postList={this.state.posts} />
       </div>
     );
   }

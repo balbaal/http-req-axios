@@ -4,7 +4,7 @@ class PostList extends React.Component{
     render(){
         const postList = this.props.postList.map(post => (
             <div key={post.id}>
-                <h3>{post.title}</h3>
+                <h3>{post.title} <button style={{cursor: 'pointer'}} onClick={() => this.props.deletePost(post.id)}>X</button></h3>
             </div>
         ))
 
