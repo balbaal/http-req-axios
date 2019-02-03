@@ -22,7 +22,7 @@ class App extends Component {
         this.setState({
           posts: res.data
         });
-        console.log(`get data success : ${res.status}`);
+        alert(`get data success : ${res.status}`);
       })
       .catch(err => console.log(err));
   }
@@ -37,7 +37,7 @@ class App extends Component {
   deletePost = id => {
     axios
       .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then(res => console.log(`delete data success : ${res.status}`))
+      .then(res => alert(`delete data success : ${res.status}`))
       .catch(err => console.log(err))
 
     // actually, after delete data must be return the result
@@ -61,7 +61,7 @@ class App extends Component {
             http request with axios. <br /> scrooldown to rock !!
           </p>
         </header>
-        <PostForm inputPost={this.inputPost} /> <hr />
+        <PostForm postType="Post Form" inputPost={this.inputPost} /> <hr />
         <PostList deletePost={this.deletePost} postList={this.state.posts} />
       </div>
     );
